@@ -1,0 +1,27 @@
+
+---
+    title : historical context
+
+## 2025-10-06
+
+-   Edited `src/app/page.tsx` lines 1-78: replaced placeholder with full header and hero matching mock (nav links, CTA buttons, gradient blob, phone image `public/assets/Hero.png`).
+-   Minor touch in `src/app/globals.css`: ensured base layer intact for hero; no breaking changes.
+-   Added `baseUrl` to `tsconfig.json` earlier to resolve path alias.
+-   Edited `src/app/page.tsx` lines ~53-90: wrapped hero in rounded-bottom container with bottom-left radial gradient and `overflow-hidden` to match curved component background.
+-   Added `.bg-hero-blob` utility in `src/app/globals.css` and updated hero wrapper to use it for reliable gradient rendering.
+-   Intensified hero gradient in `src/app/globals.css` by layering two radial-gradients and increasing color mix to 42%.
+-   Tuned gradient to be smaller and corner-confined; decreased secondary mix to 26% and accent to 18%.
+-   Adjusted phone mock alignment in `src/app/page.tsx` to crop at right edge (shifted container to `justify-end`, added right translation, and repositioned local blob).
+-   Increased phone size and allowed bleed: negative right margin on container, larger image widths, and larger/repositioned blob in `src/app/page.tsx`.
+-   Made the right-side blob visible: removed negative z-index, added `pointer-events-none`, increased lg size in `src/app/page.tsx`.
+-   Forced blob rendering with inline CSS `radial-gradient` using `color-mix` and raised phone image to `z-10` so blob sits behind.
+-   Increased blob size across breakpoints in `src/app/page.tsx` (640/820/1100).
+-   Boosted blob intensity and size; layered secondary (48%) + accent (22%) radial gradients in `src/app/page.tsx`.
+-   Increased pink accent to 32% and slightly repositioned/expanded the accent gradient in `src/app/page.tsx`.
+-   Added "How CAF Works" section after `HeroDesktop` in `src/app/page.tsx` with three cards and copy matching the mock.
+-   Replaced emoji placeholders with PNG icons at `/public/assets/icons/{1,2,3}.png` in the How CAF Works section.
+-   Added "Visualize Before You Buy" AR try-on section after How CAF Works; includes centered frame, rotated side cards as placeholders, category pills, and CTA.
+-   Wired up AR section with images from `/public/assets/ui/` (guy.png center, shirt/pant/shoes/watch around) replacing placeholders.
+-   Tightened side AR cards by removing inner padding (`p-0`) so images fill the card edge-to-edge.
+-   Added non-interactive heart buttons to the four side AR cards (top-right in each card) to match Instagram-like like UI.
+---

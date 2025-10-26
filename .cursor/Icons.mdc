@@ -1,0 +1,8 @@
+---
+alwaysApply: true
+
+title: Icons 
+description: we are using @phosphor-icons/react instead of lucide react this time , because we want to use the same icons in the future. 
+
+access the github here : https://github.com/phosphor-icons/react
+---
