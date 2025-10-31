@@ -123,6 +123,7 @@ function SuggestionsContent() {
 					occupation: "",
 					height: "",
 					preferred_fit: "",
+					color_analysis: null as any,
 					reference_image_base64: null as string | null,
 					reference_item_description: "",
 				};
@@ -136,6 +137,8 @@ function SuggestionsContent() {
 							// Ensure body_type is in title case for API
 							body_type: BODY_TYPE_MAP[parsedData.body_type?.toLowerCase()] || bodyType,
 							reference_image_base64: referenceImageBase64,
+							// Pass color_analysis to backend
+							color_analysis: parsedData.color_analysis || null,
 						};
 					} catch (e) {
 						console.error("Error parsing style quiz data:", e);
@@ -148,13 +151,12 @@ function SuggestionsContent() {
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(formData),
 				});
-
 				if (!outfitsResponse.ok) {
 					const errorData = await outfitsResponse.json();
 					throw new Error(errorData.detail || "Failed to generate outfits");
 				}
-
 				const outfitsData = await outfitsResponse.json();
+				console.log(outfitsData);
 				setOccasions(outfitsData.occasions || []);
 			} catch (err) {
 				setError(err instanceof Error ? err.message : "An error occurred");
@@ -186,6 +188,7 @@ function SuggestionsContent() {
 				occupation: "",
 				height: "",
 				preferred_fit: "",
+				color_analysis: null as any,
 				reference_image_base64: null as string | null,
 				reference_item_description: "",
 			};
@@ -199,6 +202,8 @@ function SuggestionsContent() {
 						// Ensure body_type is in title case for API
 						body_type: BODY_TYPE_MAP[parsedData.body_type?.toLowerCase()] || bodyType,
 						reference_image_base64: referenceImageBase64,
+						// Pass color_analysis to backend
+						color_analysis: parsedData.color_analysis || null,
 					};
 				} catch (e) {
 					console.error("Error parsing style quiz data:", e);
@@ -281,6 +286,7 @@ function SuggestionsContent() {
 	if (selectedOccasionIndex !== null) {
 		const occasionData = occasions[selectedOccasionIndex];
 		const outfit = occasionData.outfits[occasionData.current_index];
+		console.log(outfit)
 		return (
 			<div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 pb-12">
 				{/* Header */}
@@ -288,7 +294,7 @@ function SuggestionsContent() {
 					<div className="mx-auto max-w-7xl px-6 py-4">
 						<div className="flex items-center justify-between">
 							<Button
-								variant="ghost"
+								variant="outline"
 								onClick={() => setSelectedOccasionIndex(null)}
 								className="flex items-center gap-2"
 							>
@@ -351,12 +357,12 @@ function SuggestionsContent() {
 										{/* Product Image */}
 										<div className="relative aspect-[3/4] bg-neutral-100">
 											<img
-												src={`http://localhost:8000${item.image_url}`}
+												src={item.image_url}
 												alt={item.subcategory}
 												className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-												onError={(e) => {
-													e.currentTarget.src = `https://via.placeholder.com/400x533/f5f5f5/666666?text=${encodeURIComponent(item.subcategory)}`;
-												}}
+												// onError={(e) => {
+												// 	e.currentTarget.src = `https://via.placeholder.com/400x533/f5f5f5/666666?text=${encodeURIComponent(item.subcategory)}`;
+												// }}
 											/>
 											<div className="absolute top-2 right-2 flex gap-1">
 												<button className="p-2 bg-white/90 rounded-full hover:bg-white">
@@ -520,12 +526,12 @@ function SuggestionsContent() {
 												{outfit.items.slice(0, 4).map((item, idx) => (
 													<div key={idx} className="relative bg-white rounded-lg overflow-hidden">
 														<img
-															src={`http://localhost:8000${item.image_url}`}
+															src={item.image_url}
 															alt={item.subcategory}
 															className="w-full h-full object-cover"
-															onError={(e) => {
-																e.currentTarget.src = `https://via.placeholder.com/200x267/f5f5f5/666666?text=${encodeURIComponent(item.category)}`;
-															}}
+															// onError={(e) => {
+															// 	e.currentTarget.src = `https://via.placeholder.com/200x267/f5f5f5/666666?text=${encodeURIComponent(item.category)}`;
+															// }}
 														/>
 													</div>
 												))}
