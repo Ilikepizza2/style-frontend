@@ -378,7 +378,7 @@ function SuggestionsContent() {
 											<CardTitle className="text-sm">
 												{item.subcategory}
 											</CardTitle>
-											<p className="text-xs text-muted-foreground line-clamp-2">
+											<p className="text-xs text-muted-foreground line-clamp-4">
 												{item.reason}
 											</p>
 											<p className="text-sm font-bold mt-2">

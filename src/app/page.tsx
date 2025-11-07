@@ -10,7 +10,7 @@ const HeroDesktop = () => {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 	
 	return (
-		<div className="min-h-screen bg-background">
+		<div className="min-h-screen bg-background flex flex-col items-center">
 			{/* Top Nav */}
 			<header className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 sm:px-6 py-4 sm:py-6">
 				<div className="flex items-center gap-2 sm:gap-3">
@@ -37,6 +37,12 @@ const HeroDesktop = () => {
 						className="text-sm text-foreground hover:opacity-80 transition-opacity"
 					>
 						Features
+					</Link>
+					<Link
+						href="/dashboard"
+						className="text-sm text-foreground hover:opacity-80 transition-opacity"
+					>
+						Brand Portal
 					</Link>
 				</nav>
 				<div className="hidden md:flex items-center gap-3">
@@ -91,6 +97,13 @@ const HeroDesktop = () => {
 						>
 							Features
 						</Link>
+						<Link
+							href="/dashboard"
+							className="text-sm text-foreground hover:text-secondary transition-colors py-2"
+							onClick={() => setMobileMenuOpen(false)}
+						>
+							Brand Portal
+						</Link>
 						<div className="flex flex-col gap-2 pt-4 border-t">
 							<Button variant="ghost" className="w-full">
 								Login
@@ -104,7 +117,7 @@ const HeroDesktop = () => {
 			)}
 
 			{/* Hero */}
-			<div className="relative w-full overflow-hidden rounded-b-[24px] sm:rounded-b-[32px] md:rounded-b-[56px]">
+			<div className="relative w-[80%] overflow-hidden rounded-b-[24px] sm:rounded-b-[32px] md:rounded-b-[56px]">
 				{/* bottom-left soft gradient background */}
 				<div className="pointer-events-none absolute inset-0 bg-hero-blob" />
 				<section className="relative mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-6 sm:gap-8 px-4 sm:px-6 pb-12 sm:pb-16 pt-6 sm:pt-8 md:grid-cols-2 md:gap-6 md:pb-24 md:pt-10">
@@ -134,7 +147,7 @@ const HeroDesktop = () => {
 					</div>
 
 					{/* Right phone mock (cropped at page edge) */}
-					<div className="relative flex h-[300px] sm:h-[420px] items-center justify-center md:justify-end md:h-[600px]">
+					<div className="relative flex h-[300px] sm:h-[420px] items-center justify-center md:justify-end md:h-[600px] bg-gray-100 rounded-xl">
 						{/* soft gradient blob */}
 						<div
 							className="pointer-events-none absolute left-[50%] sm:left-[60%] top-1/2 z-0 h-[400px] w-[400px] sm:h-[640px] sm:w-[640px] -translate-x-1/2 -translate-y-1/2 rounded-[48px] blur-0 md:h-[820px] md:w-[820px] lg:h-[1100px] lg:w-[1100px]"
@@ -148,9 +161,9 @@ const HeroDesktop = () => {
 							src="/assets/Hero.png"
 							alt="Phone showing outfits"
 							priority
-							className="relative z-10 h-auto w-[220px] sm:w-[280px] md:w-[320px] md:translate-x-6 lg:w-[1450px] lg:translate-y-32 lg:translate-x-44"
-							width={720}
-							height={1280}
+							className="relative z-10 h-auto w-[220px] sm:w-[280px] md:w-[320px] md:translate-x-6 lg:w-[1450px] lg:translate-y- lg:translate-x-44 rounded-xl"
+							width={1080}
+							height={1920}
 						/>
 					</div>
 				</section>
